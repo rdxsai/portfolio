@@ -1,0 +1,148 @@
+@import "./variables.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+  letter-spacing: -0.02em;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  background: var(--background);
+  color: var(--foreground);
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+a:hover {
+  text-decoration: none;
+  text-shadow: 0 0 8px var(--accent-glow);
+}
+
+a:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 25px 0;
+  color: var(--foreground);
+}
+
+h1 { font-size: calc(var(--font-size) * 1.45); }
+h2 { font-size: calc(var(--font-size) * 1.35); }
+h3 { font-size: calc(var(--font-size) * 1.15); }
+h4, h5, h6 { font-size: var(--font-size); }
+
+p {
+  margin: 15px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 4ch;
+}
+
+ul li {
+  position: relative;
+}
+
+ul li::before {
+  content: "-";
+  color: var(--accent);
+  position: absolute;
+  left: -2ch;
+}
+
+hr {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 20%,
+    var(--accent) 80%,
+    transparent
+  );
+  border: none;
+  width: 100%;
+  margin: 40px 0;
+  opacity: 0.4;
+}
+
+::selection {
+  background: var(--accent-glow);
+}
+
+code {
+  font-family: var(--font-family);
+  background: var(--accent-dim);
+  border: 1px solid var(--code-border);
+  padding: 1px 6px;
+  margin: 0 2px;
+  font-size: calc(var(--font-size) * 0.95);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.reveal-stagger .reveal-child {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.reveal-stagger .reveal-child.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,22 @@
+.footer {
+  padding: 25px 0;
+  flex-grow: 0;
+  color: var(--muted);
+  font-size: calc(var(--font-size) * 0.8);
+}
+
+.footer a {
+  color: var(--accent);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.footer__inner span:nth-child(2) {
+  color: var(--accent);
+  opacity: 0.4;
+}

@@ -1,0 +1,21 @@
+:root {
+  --background: #050510;
+  --foreground: #d0cfc8;
+  --accent: #eec35e;
+  --accent-glow: rgba(238, 195, 94, 0.25);
+  --accent-dim: rgba(238, 195, 94, 0.08);
+  --nebula: #5e9bff;
+  --nebula-dim: rgba(94, 155, 255, 0.06);
+  --font-size: 1rem;
+  --line-height: 1.54em;
+  --radius: 0;
+  --font-family: "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace;
+  --code-border: rgba(208, 207, 200, 0.1);
+  --muted: rgba(208, 207, 200, 0.5);
+}
+
+@media (max-width: 684px) {
+  :root {
+    --font-size: 0.95rem;
+  }
+}
