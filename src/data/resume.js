@@ -48,6 +48,16 @@ export const experience = [
 
 export const projects = [
   {
+    title: "PolicyPulse: Multi-Agent Economic Policy Simulation Engine",
+    tech: ["LangGraph", "Gemini", "FastAPI", "Next.js", "Pydantic"],
+    details: [
+      "Built a 4-agent policy simulation engine (LangGraph StateGraph) that ingests any economic policy proposal and produces household-level dollar impact analysis across 48 demographic profiles (4 income tiers × 4 household types × 3 geographies) with timeline projections, waterfall charts, and distributional verdicts.",
+      "Designed a phase-gated ReAct architecture (20 phases across 4 agents) enforcing strict analytical sequencing via LangGraph conditional edges while preserving autonomous tool selection within each phase, with domain-specific cognitive frameworks (Stock-Flow-Price for housing, Price Transmission Pipeline for consumer impact).",
+      "Integrated 12 real government data APIs (FRED, BLS, Census ACS, BEA, HUD, Semantic Scholar, OpenAlex) with error-safe tool wrappers enabling LLM self-correction, achieving 99 tool calls per run at 90% pipeline eval score (31/35 rubrics passed) via a custom ADK-inspired evaluation framework with phantom channel regression tests.",
+      "Optimized end-to-end pipeline from 700s to 420s (40% faster) through batch tool calling, conditional early exits on negligible-impact sectors, programmatic phase summarization replacing LLM calls (7s → 0.1ms per summary), and tuned recursion limits, with real-time SSE streaming of agent reasoning to a Next.js frontend.",
+    ],
+  },
+  {
     title: "MCP Security Scanner: Autonomous Vulnerability Exploitation Agent",
     tech: ["Python", "FastMCP", "Docker SDK", "React", "OpenAI"],
     details: [
