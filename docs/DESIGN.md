@@ -10,7 +10,7 @@
 
 The reference (kuber.studio) is a terminal portfolio; the risk is genericity. Choices made to ground it in *this* subject (an applied AI engineer who ships multi-agent systems):
 
-1. **Signature — agent-trace boot.** The boot sequence reads like one of Rudra's own systems spinning up: agents spawning, MCP servers connecting, pgvector coming online. Skippable with any key; instant on repeat visits (sessionStorage) and under `prefers-reduced-motion`.
+1. **Boot kept minimal** (revised on user feedback, 2026-07-16): a single `rudra-sh v1.0.0` line, the name banner, title/location, and one clickable line of core commands (about · projects · exp · resume · contact · help). The original multi-line agent-trace boot was cut as too verbose.
 2. **tmux status bar as navigation.** Instead of generic "command chips", the clickable shortcuts are numbered tmux windows in a bottom status bar with session name and clock — authentic terminal vernacular that doubles as recruiter-friendly nav.
 3. **A curated colorscheme, not monochrome.** Mint anchor plus periwinkle (commands/keys), amber (dates/metrics), red (errors) — the way a real engineer's terminal is themed. `theme` command switches between mint / tokyo / paper (light) / matrix, persisted in localStorage.
 4. **Instant output.** No typewriter effect on content — real terminals are instant, and recruiters shouldn't wait. Motion budget is spent once, on the boot.

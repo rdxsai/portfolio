@@ -140,6 +140,16 @@ button:focus-visible {
 .file   { color: var(--text); }
 .para   { max-width: 78ch; }
 
+.cmd-link {
+  color: var(--cmd);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.cmd-link:hover { color: var(--bright); text-decoration-style: solid; }
+.cmd-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
 .kbd {
   background: var(--bg-chip);
   border: 1px solid var(--border);

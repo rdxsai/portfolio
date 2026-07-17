@@ -139,6 +139,23 @@ const Term = {
       this.focus();
     });
 
+    // Clickable command words printed into the output (e.g. the greeting).
+    this.el.output.addEventListener("click", (e) => {
+      const t = e.target.closest("[data-run]");
+      if (!t || this.program) return;
+      e.stopPropagation();
+      this.exec(t.getAttribute("data-run"));
+      if (!window.matchMedia("(pointer: coarse)").matches) this.focus();
+    });
+    this.el.output.addEventListener("keydown", (e) => {
+      const t = e.target.closest("[data-run]");
+      if (!t || this.program) return;
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        this.exec(t.getAttribute("data-run"));
+      }
+    });
+
     // tmux bar buttons
     document.querySelectorAll("[data-cmd]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -364,40 +381,13 @@ const Term = {
 
 /* ---------- boot sequence ---------- */
 
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-async function boot() {
-  const instant =
-    prefersReducedMotion() || sessionStorage.getItem("rsh-booted") === "1";
-  let skipped = instant;
-
-  const skip = () => { skipped = true; };
-  document.addEventListener("keydown", skip, { once: true });
-  document.addEventListener("pointerdown", skip, { once: true });
-
-  if (!instant) {
-    Term.printHTML(`<span class="dim">press any key to skip</span>`, "boot-skip-hint");
-  }
-
+function boot() {
   for (const step of DATA.bootTrace) {
-    if (!skipped) {
-      await new Promise((r) => setTimeout(r, step.t));
-    }
     const mark = step.cls === "ok" ? `<span class="ok">[ok]</span> ` : `<span class="dim">[..]</span> `;
     Term.printHTML(mark + `<span class="${step.cls === "ok" ? "" : "dim"}">${Term.esc(step.text)}</span>`, "boot-line");
   }
-
-  document.removeEventListener("keydown", skip);
-  document.removeEventListener("pointerdown", skip);
-  const hint = document.querySelector(".boot-skip-hint");
-  if (hint) hint.remove();
-  try { sessionStorage.setItem("rsh-booted", "1"); } catch (_) {}
-
   Term.blank();
   greet();
-
   if (!window.matchMedia("(pointer: coarse)").matches) Term.focus();
 }
 
@@ -407,14 +397,13 @@ function greet() {
   Term.printHTML(
     `<span class="bright">${Term.esc(DATA.identity.title)}</span> <span class="dim">·</span> <span class="amber">${Term.esc(DATA.identity.location)}</span>`,
   );
-  Term.printHTML(`<span class="dim">${Term.esc(DATA.identity.tagline)}</span>`);
   Term.blank();
+  const cmds = ["about", "projects", "exp", "resume", "contact", "help"];
   Term.printHTML(
-    `Type <span class="kbd">help</span> to see what this shell can do, ` +
-    `<span class="kbd">Tab</span> to autocomplete, <span class="kbd">↑</span> for history.`,
-  );
-  Term.printHTML(
-    `<span class="dim">Not a terminal person? The bar below works like tmux windows — just click.</span>`,
+    `<span class="dim">commands:</span> ` +
+      cmds
+        .map((c) => `<span class="cmd-link" data-run="${c}" role="button" tabindex="0">${c}</span>`)
+        .join(`<span class="dim"> · </span>`),
   );
   Term.blank();
 }

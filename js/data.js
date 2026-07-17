@@ -190,16 +190,7 @@ const DATA = {
   },
 
   bootTrace: [
-    { t: 0,   text: "rudra-sh v1.0.0 — interactive portfolio shell", cls: "ok" },
-    { t: 90,  text: "spawning agents .................... 4/4", cls: "ok" },
-    { t: 90,  text: "[agent:whoami]     identity loaded — Rudra Desai · Applied AI Engineer", cls: "dim" },
-    { t: 110, text: "[agent:retrieval]  hybrid index warm (HyDE + BM25 · RRF)", cls: "dim" },
-    { t: 110, text: "[agent:tutor]      socratic mode ready — 200+ students served", cls: "dim" },
-    { t: 110, text: "[agent:eval]       rubrics loaded — 31/35 passing", cls: "dim" },
-    { t: 130, text: "[mcp] student-modeling ─ connected", cls: "dim" },
-    { t: 90,  text: "[mcp] wcag-docs ─ connected", cls: "dim" },
-    { t: 110, text: "[db]  postgres + pgvector ─ 768-dim vectors online", cls: "dim" },
-    { t: 150, text: "boot complete in 0.42s", cls: "ok" },
+    { t: 0, text: "rudra-sh v1.0.0 — interactive portfolio shell", cls: "ok" },
   ],
 };
 
