@@ -36,15 +36,30 @@ const ALIASES = {
 
 function renderProjectList() {
   Term.secTitle("projects");
-  for (const p of DATA.projects) {
-    Term.printHTML(
-      `<span class="cmd-name pad-slug">${Term.esc(p.slug)}</span><span class="dim">${Term.esc(p.tagline)}</span>`,
-      "row",
+  const cards = DATA.projects.map((p) => {
+    const gh = p.link && p.link.match(/github\.com\/([^/]+\/[^/]+)/);
+    const media = gh
+      ? `<img class="card-img" loading="lazy" alt="${Term.esc(p.name)} repository preview" src="https://opengraph.githubassets.com/rsh/${gh[1]}" />`
+      : `<div class="card-img card-ph" aria-hidden="true"><span>${Term.esc(
+          p.name.split(/\s+/).map((w) => w[0]).join("").slice(0, 3).toUpperCase(),
+        )}</span></div>`;
+    const chips = p.tech.slice(0, 4).map((t) => `<span class="chip">${Term.esc(t)}</span>`).join("");
+    const more = p.tech.length > 4 ? `<span class="chip">+${p.tech.length - 4}</span>` : "";
+    const code = p.link ? `<a href="${Term.esc(p.link)}" target="_blank" rel="noopener noreferrer">code ↗</a>` : "";
+    return (
+      `<div class="card" data-run="projects ${p.slug}" role="button" tabindex="0" aria-label="${Term.esc(p.name)} — details">` +
+      media +
+      `<div class="card-body">` +
+      `<div class="card-title">${Term.esc(p.name)}</div>` +
+      `<div class="card-tag">${Term.esc(p.tagline)}</div>` +
+      `<div class="card-tech">${chips}${more}</div>` +
+      `<div class="card-links">${code}<span class="card-more">details ›</span></div>` +
+      `</div></div>`
     );
-  }
-  Term.blank();
+  });
+  Term.printHTML(`<div class="projects-grid">${cards.join("")}</div>`);
   Term.printHTML(
-    `<span class="dim">detail:</span> <span class="kbd">projects &lt;name&gt;</span> <span class="dim">— e.g.</span> <span class="kbd">projects policypulse</span>`,
+    `<span class="dim">click a card, or:</span> <span class="kbd">projects &lt;name&gt;</span> <span class="dim">— e.g.</span> <span class="kbd">projects policypulse</span>`,
   );
 }
 

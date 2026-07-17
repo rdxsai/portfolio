@@ -141,6 +141,7 @@ const Term = {
 
     // Clickable command words printed into the output (e.g. the greeting).
     this.el.output.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return; // real links win over card actions
       const t = e.target.closest("[data-run]");
       if (!t || this.program) return;
       e.stopPropagation();
