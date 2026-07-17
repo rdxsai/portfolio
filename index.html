@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="mint">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rudra Desai — Applied AI Engineer</title>
+
+  <meta name="description" content="Rudra Desai is an Applied AI Engineer building multi-agent systems, RAG pipelines, and MCP servers. M.Eng. Computer Science, Virginia Tech. Explore the interactive terminal portfolio." />
+  <meta name="author" content="Rudra Desai" />
+  <meta name="theme-color" content="#0a0e14" />
+  <link rel="canonical" href="https://rdxsai.github.io/portfolio/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rudra Desai — Applied AI Engineer" />
+  <meta property="og:description" content="Multi-agent systems, RAG, and MCP servers — explore an interactive terminal portfolio. Type `help` to begin." />
+  <meta property="og:url" content="https://rdxsai.github.io/portfolio/" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/211418602?v=4" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rudra Desai — Applied AI Engineer" />
+  <meta name="twitter:description" content="Interactive terminal portfolio. Type `help` to begin." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230a0e14'/%3E%3Ctext%20x='10'%20y='42'%20font-family='monospace'%20font-size='30'%20font-weight='bold'%20fill='%2322d3ae'%3E%26gt;_%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rudra Desai",
+    "jobTitle": "Applied AI Engineer",
+    "email": "mailto:dxsai@vt.edu",
+    "address": { "@type": "PostalAddress", "addressLocality": "Washington", "addressRegion": "DC" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Virginia Tech" },
+    "sameAs": [
+      "https://github.com/rdxsai",
+      "https://www.linkedin.com/in/rudradesai18/"
+    ],
+    "knowsAbout": ["Multi-Agent Systems", "Retrieval-Augmented Generation", "MCP Servers", "Machine Learning", "LLM Fine-Tuning"]
+  }
+  </script>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/games.js" defer></script>
+  <script src="js/commands.js" defer></script>
+  <script src="js/terminal.js" defer></script>
+</head>
+<body>
+
+  <main id="screen" aria-label="Interactive terminal">
+    <div id="output" aria-live="polite"></div>
+
+    <div id="input-line">
+      <span class="ps1"><span class="ps1-user">rudra@portfolio</span><span class="ps1-sep">:</span><span class="ps1-path">~</span><span class="ps1-sym">$</span></span>
+      <span id="typed"><span id="typed-before"></span><span id="cursor">&nbsp;</span><span id="typed-after"></span><input id="cmd" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-label="Terminal command input" /></span>
+    </div>
+
+    <noscript>
+      <div class="static-fallback">
+        <h1>Rudra Desai</h1>
+        <p class="meta">Applied AI Engineer · Washington, DC · <a href="mailto:dxsai@vt.edu">dxsai@vt.edu</a> · <a href="https://github.com/rdxsai">GitHub</a> · <a href="https://www.linkedin.com/in/rudradesai18/">LinkedIn</a></p>
+        <p>JavaScript is off, so you're reading the static version of this site. With it on, this page is an interactive terminal with tab completion, themes, and a snake game.</p>
+
+        <h2>About</h2>
+        <p>Applied AI Engineer specializing in multi-agent systems, retrieval-augmented generation, and transformer fine-tuning. Built and shipped LLM-powered platforms serving 200+ users with dual-source hybrid retrieval (HyDE + BM25 with RRF), custom MCP tool servers, tiered student modeling, and Docker-orchestrated ML infrastructure.</p>
+
+        <h2>Experience</h2>
+        <h3>Gen AI Engineer (Graduate Assistant) — TLOS, Virginia Tech</h3>
+        <p class="meta">Aug 2025 – Present · Blacksburg, VA</p>
+        <ul>
+          <li>Shipped a 6-agent Socratic tutoring system (CrewAI) serving 200+ students/semester with dual-source hybrid retrieval and live WCAG MCP tool calls.</li>
+          <li>Built a custom Student Modeling MCP server with tiered session memory in PostgreSQL.</li>
+          <li>Engineered an incremental embedding pipeline (Ollama nomic-embed-text, 768-dim) with SSE progress streaming.</li>
+          <li>Automated Canvas LMS ingestion with a fault-tolerant, idempotent ETL pipeline.</li>
+          <li>Migrated to PostgreSQL/pgvector and containerized the stack with Docker Compose.</li>
+        </ul>
+        <h3>Software Engineer (Research Assistant) — Virginia Tech</h3>
+        <p class="meta">Jun 2025 – Aug 2025 · Blacksburg, VA</p>
+        <ul>
+          <li>AI researcher-matchmaking platform: SentenceTransformer embeddings + pgvector HNSW, sub-second search across 10K+ profiles.</li>
+          <li>Async ML orchestration (Celery + Redis) with SHA-256 change detection and zero-downtime re-indexing.</li>
+        </ul>
+
+        <h2>Projects</h2>
+        <ul>
+          <li><strong>PolicyPulse</strong> — multi-agent economic policy simulation engine (LangGraph, Gemini). <a href="https://github.com/rdxsai/hoohacks2026">code</a></li>
+          <li><strong>MCP Security Scanner</strong> — autonomous vulnerability exploitation &amp; patch-verification agent (FastMCP, Docker).</li>
+          <li><strong>Socratic Tutor</strong> — 6-agent AI tutoring platform in production at Virginia Tech.</li>
+          <li><strong>DecisionOps</strong> — Slack-native AI agent for capturing decisions. <a href="https://github.com/rdxsai/decisionops">code</a></li>
+          <li><strong>Research Matchmaking</strong> — embedding-driven researcher matching. <a href="https://github.com/rdxsai/research-matchmaking">code</a></li>
+          <li><strong>HateXplain Enhancement</strong> — hate-speech detection with contrastive embeddings + DeBERTa. <a href="https://github.com/rdxsai/nlp_hateXplain">code</a></li>
+        </ul>
+
+        <h2>Skills</h2>
+        <p>Python · JavaScript/TypeScript · SQL · Java · LLMs · RAG (HyDE, RRF) · CrewAI · LangGraph · MCP Servers · PyTorch · HuggingFace · pgvector · FAISS · PostgreSQL · Docker · FastAPI · Celery · Redis · Azure · AWS · React</p>
+
+        <h2>Education</h2>
+        <p>M.Eng. Computer Science, Virginia Tech — expected May 2026</p>
+      </div>
+    </noscript>
+  </main>
+
+  <nav id="tmux-bar" aria-label="Quick commands">
+    <span class="tmux-session">[rudra@portfolio]</span>
+    <button class="tmux-win" data-cmd="help"><span class="n">0:</span>help</button>
+    <button class="tmux-win" data-cmd="whoami"><span class="n">1:</span>whoami</button>
+    <button class="tmux-win" data-cmd="projects"><span class="n">2:</span>projects</button>
+    <button class="tmux-win" data-cmd="experience"><span class="n">3:</span>experience</button>
+    <button class="tmux-win" data-cmd="skills"><span class="n">4:</span>skills</button>
+    <button class="tmux-win" data-cmd="contact"><span class="n">5:</span>contact</button>
+    <button class="tmux-win" data-cmd="resume"><span class="n">6:</span>resume</button>
+    <button class="tmux-win" data-cmd="snake"><span class="n">7:</span>snake</button>
+    <span class="tmux-right"><span id="tmux-loc">washington, dc</span><span id="tmux-clock">--:--</span></span>
+  </nav>
+
+</body>
+</html>

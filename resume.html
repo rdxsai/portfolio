@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Desai — Resume</title>
+  <meta name="description" content="Resume of Rudra Desai, Applied AI Engineer. Multi-agent systems, RAG, MCP servers. M.Eng. Computer Science, Virginia Tech." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230a0e14'/%3E%3Ctext%20x='10'%20y='42'%20font-family='monospace'%20font-size='30'%20font-weight='bold'%20fill='%2322d3ae'%3E%26gt;_%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --ink: #1a1f26;
+      --muted: #5a6470;
+      --accent: #0e7c66;
+      --rule: #d9dde3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: #eef0f3;
+      line-height: 1.5;
+      font-size: 13.5px;
+    }
+    .page {
+      max-width: 8.5in;
+      margin: 24px auto;
+      background: #fff;
+      padding: 0.75in 0.8in;
+      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.12);
+    }
+    .toolbar {
+      max-width: 8.5in;
+      margin: 16px auto 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 13px;
+    }
+    .toolbar a, .toolbar button {
+      color: var(--accent);
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      text-decoration: none;
+      font: inherit;
+    }
+    .toolbar a:hover, .toolbar button:hover { border-color: var(--accent); }
+
+    header h1 { font-size: 26px; letter-spacing: 0.01em; }
+    .headline { color: var(--accent); font-weight: 600; margin-top: 2px; }
+    .contact { color: var(--muted); margin-top: 6px; font-size: 12.5px; }
+    .contact a { color: var(--muted); text-decoration: none; }
+    .contact a:hover { color: var(--accent); }
+    .contact span + span::before { content: " · "; color: var(--rule); margin: 0 2px; }
+
+    h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      margin: 22px 0 10px;
+    }
+    .entry { margin-bottom: 12px; }
+    .entry-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0 12px; }
+    .entry-head strong { font-size: 14px; }
+    .where { color: var(--muted); }
+    .when { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    ul { padding-left: 18px; margin-top: 4px; }
+    li { margin-bottom: 3px; }
+    .tech {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11.5px;
+      color: var(--accent);
+    }
+    .skills-grid { display: grid; grid-template-columns: 11em 1fr; row-gap: 4px; }
+    .skills-grid dt { font-weight: 600; }
+    .skills-grid dd { color: var(--muted); }
+    .summary { margin-top: 4px; }
+
+    @media print {
+      body { background: #fff; font-size: 12px; }
+      .page { margin: 0; padding: 0; box-shadow: none; max-width: none; }
+      .toolbar { display: none; }
+      a { color: inherit; }
+      @page { margin: 0.6in 0.7in; }
+    }
+    @media (max-width: 700px) {
+      .page { padding: 24px 20px; margin: 12px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skills-grid dt { margin-top: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="./">← back to terminal</a>
+    <button onclick="window.print()">print / save as PDF</button>
+  </div>
+
+  <div class="page">
+    <header>
+      <h1>Rudra Desai</h1>
+      <div class="headline">Applied AI Engineer</div>
+      <!-- Add a phone number here if you want it on the printed copy. -->
+      <div class="contact">
+        <span>Washington, DC</span>
+        <span><a href="mailto:dxsai@vt.edu">dxsai@vt.edu</a></span>
+        <span><a href="https://github.com/rdxsai">github.com/rdxsai</a></span>
+        <span><a href="https://www.linkedin.com/in/rudradesai18/">linkedin.com/in/rudradesai18</a></span>
+      </div>
+    </header>
+
+    <h2>Summary</h2>
+    <p class="summary">Applied AI Engineer specializing in multi-agent systems, retrieval-augmented generation, and transformer fine-tuning. Built and shipped LLM-powered platforms serving 200+ users with dual-source hybrid retrieval (HyDE + BM25 with RRF), custom MCP tool servers, tiered student modeling, and Docker-orchestrated ML infrastructure. Proven ability to take AI prototypes from design through production deployment on Azure and AWS.</p>
+
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>Gen AI Engineer (Graduate Assistant)</strong> — <span class="where">TLOS, Virginia Tech · Blacksburg, VA</span></div>
+        <div class="when">Aug 2025 – Present</div>
+      </div>
+      <ul>
+        <li>Shipped a 6-agent Socratic tutoring system (CrewAI) serving 200+ students/semester with dual-source retrieval: HyDE-powered hybrid search (cosine + BM25 with RRF) over 200+ semantically chunked quiz items in parallel with LLM-driven WCAG MCP tool calls against live W3C documentation, with automatic retry routing on empty results.</li>
+        <li>Built a custom Student Modeling MCP server exposing mastery tracking, progress monitoring, and prerequisite gap analysis via LLM tool calling, backed by tiered session memory (short/medium/long-term AI summaries in PostgreSQL) for personalized Socratic responses without injecting full history into prompts.</li>
+        <li>Engineered an incremental embedding pipeline (Ollama nomic-embed-text, 768-dim) with event-driven triggers, metadata tagging (correctness, Bloom's taxonomy, topic), and SSE streaming of per-item progress to the frontend.</li>
+        <li>Automated Canvas LMS ingestion via a fault-tolerant ETL pipeline with pagination, exponential-backoff rate limiting, and HTML-to-markdown conversion — zero data duplication through idempotent upserts.</li>
+        <li>Migrated from SQLite + ChromaDB to PostgreSQL/pgvector and containerized the full stack (FastAPI, PostgreSQL, Ollama) with Docker Compose for one-command deployment with schema-level environment isolation.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>Software Engineer (Research Assistant)</strong> — <span class="where">Virginia Tech · Blacksburg, VA</span></div>
+        <div class="when">Jun 2025 – Aug 2025</div>
+      </div>
+      <ul>
+        <li>Delivered an AI-powered researcher matchmaking platform using SentenceTransformer embeddings + pgvector HNSW indexing — sub-second similarity search across 10K+ profiles.</li>
+        <li>Reduced redundant computation with an async ML orchestration pipeline (Celery + Redis) using SHA-256 change detection and model versioning, achieving zero-downtime re-indexing.</li>
+        <li>Owned full-stack delivery: JWT authentication, admin re-indexing dashboard, React frontend, unified PostgreSQL data + vector store.</li>
+      </ul>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>PolicyPulse — Multi-Agent Economic Policy Simulation Engine</strong></div>
+        <div class="tech">LangGraph · Gemini · FastAPI · Next.js</div>
+      </div>
+      <ul>
+        <li>4-agent LangGraph StateGraph producing household-level dollar impact analysis across 48 demographic profiles from any economic policy proposal, with timeline projections and distributional verdicts.</li>
+        <li>Phase-gated ReAct architecture (20 phases / 4 agents) with 12 integrated government data APIs (FRED, BLS, Census ACS, BEA, HUD) — 99 tool calls per run at a 90% pipeline eval score.</li>
+        <li>Optimized end-to-end runtime 700s → 420s (40% faster) via batch tool calling, conditional early exits, and programmatic phase summarization, streamed live over SSE.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>MCP Security Scanner — Autonomous Vulnerability Exploitation Agent</strong></div>
+        <div class="tech">Python · FastMCP · Docker SDK · OpenAI</div>
+      </div>
+      <ul>
+        <li>Open-source MCP server for autonomous vulnerability exploitation and patch verification — 13 tools across 4 groups, routed across 3 concurrent MCP servers via a unified async session layer.</li>
+        <li>Docker-isolated exploit execution (memory limits, no-egress networking, auto cleanup); 85%+ exploit success on known vulnerability classes with a 5-phase Recon→Hypothesize→Exploit→Patch→Report loop.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>HateXplain Enhancement — Hate Speech Detection</strong></div>
+        <div class="tech">PyTorch · HuggingFace · DeBERTa</div>
+      </div>
+      <ul>
+        <li>Improved accuracy 0.698 → 0.72 and Macro-F1 0.687 → 0.70 with triplet-loss contrastive embeddings, hard negative mining, and DeBERTa feature fusion; staged fine-tuning with weighted multi-task loss for joint classification + rationale prediction.</li>
+      </ul>
+    </div>
+
+    <h2>Skills</h2>
+    <dl class="skills-grid">
+      <dt>Languages</dt><dd>Python, JavaScript/TypeScript, SQL, Java</dd>
+      <dt>AI / ML</dt><dd>LLMs (GPT-4, Claude), RAG (HyDE, RRF), Multi-Agent Systems (CrewAI, LangGraph), MCP Servers, Fine-Tuning, LangChain, LlamaIndex, HuggingFace Transformers, PyTorch, scikit-learn, Model Evaluation</dd>
+      <dt>Data &amp; Retrieval</dt><dd>pgvector (HNSW), FAISS, ChromaDB, PostgreSQL, Hybrid Retrieval (Dense + BM25), Cross-Encoder Reranking, Embeddings, pandas</dd>
+      <dt>Infrastructure</dt><dd>Docker, Docker Compose, FastAPI, Celery, Redis, CI/CD, Git, JWT Auth, SSE Streaming, pytest</dd>
+      <dt>Cloud &amp; Frontend</dt><dd>Azure (OpenAI Service), AWS, React</dd>
+    </dl>
+
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div><strong>Virginia Tech</strong> — <span class="where">M.Eng. in Computer Science · Alexandria, VA</span></div>
+        <div class="when">Expected May 2026</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

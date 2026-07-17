@@ -1,0 +1,349 @@
+/* ============================================================
+   styles.css — rudra-sh
+   One mono family, four colorschemes, a tmux bar.
+   ============================================================ */
+
+/* ---------- themes ---------- */
+
+:root {
+  --bg: #0a0e14;
+  --bg-elev: #111825;
+  --bg-chip: #0f1520;
+  --border: #1d2736;
+  --text: #e6e6e6;
+  --bright: #ffffff;
+  --muted: #8b94a7;
+  --accent: #22d3ae;        /* mint — prompt, links, ok */
+  --accent-dim: #17907712;
+  --cmd: #7aa2f7;           /* periwinkle — command names, keys */
+  --amber: #e0af68;         /* dates, metrics */
+  --err: #f26d78;
+  --sel-bg: #22d3ae;
+  --sel-fg: #06231c;
+  --cursor-fg: #06231c;
+}
+
+:root[data-theme="tokyo"] {
+  --bg: #1a1b26;
+  --bg-elev: #20222f;
+  --bg-chip: #1e2030;
+  --border: #2d3044;
+  --text: #c0caf5;
+  --bright: #e8ecff;
+  --muted: #565f89;
+  --accent: #7aa2f7;
+  --cmd: #bb9af7;
+  --amber: #e0af68;
+  --err: #f7768e;
+  --sel-bg: #7aa2f7;
+  --sel-fg: #10121c;
+  --cursor-fg: #10121c;
+}
+
+:root[data-theme="paper"] {
+  --bg: #f7f5ef;
+  --bg-elev: #edeae0;
+  --bg-chip: #efece3;
+  --border: #d8d3c4;
+  --text: #2b3138;
+  --bright: #14181d;
+  --muted: #71787f;
+  --accent: #0e7c66;
+  --cmd: #3b5bdb;
+  --amber: #9a6700;
+  --err: #c1341b;
+  --sel-bg: #0e7c66;
+  --sel-fg: #f7f5ef;
+  --cursor-fg: #f7f5ef;
+}
+
+:root[data-theme="matrix"] {
+  --bg: #010501;
+  --bg-elev: #041206;
+  --bg-chip: #041206;
+  --border: #0c2c12;
+  --text: #33ff33;
+  --bright: #b4ffb4;
+  --muted: #1d9e2f;
+  --accent: #33ff33;
+  --cmd: #7dff7d;
+  --amber: #c8ff5e;
+  --err: #ff5f5f;
+  --sel-bg: #33ff33;
+  --sel-fg: #010501;
+  --cursor-fg: #010501;
+}
+
+/* ---------- base ---------- */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+::selection { background: var(--sel-bg); color: var(--sel-fg); }
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-style: solid; }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- screen (scrollback) ---------- */
+
+#screen {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px clamp(14px, 4vw, 40px) 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+#screen::-webkit-scrollbar { width: 8px; }
+#screen::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+#output, #input-line { max-width: 96ch; }
+
+:root[data-theme="matrix"] #screen { text-shadow: 0 0 7px rgba(51, 255, 51, 0.28); }
+
+/* ---------- lines & inline roles ---------- */
+
+.line { white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.65em; }
+.blank { min-height: 0.9em; }
+
+.dim    { color: var(--muted); }
+.bright { color: var(--bright); font-weight: 700; }
+.accent { color: var(--accent); }
+.amber  { color: var(--amber); }
+.err    { color: var(--err); }
+.ok     { color: var(--accent); font-weight: 500; }
+.cmd-name { color: var(--cmd); }
+.file   { color: var(--text); }
+.para   { max-width: 78ch; }
+
+.kbd {
+  background: var(--bg-chip);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 6px;
+  color: var(--amber);
+  font-size: 0.92em;
+  white-space: nowrap;
+}
+
+.chip {
+  display: inline-block;
+  background: var(--bg-chip);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--cmd);
+  padding: 0 7px;
+  margin: 1px 0;
+  font-size: 0.88em;
+  line-height: 1.7;
+}
+.chips { margin: 4px 0 8px; }
+
+/* ---------- prompt & echo ---------- */
+
+.ps1-user { color: var(--accent); font-weight: 700; }
+.ps1-sep  { color: var(--muted); }
+.ps1-path { color: var(--cmd); font-weight: 700; }
+.ps1-sym  { color: var(--muted); margin-left: 2px; }
+
+.prompt-echo { margin-top: 10px; }
+.echoed { color: var(--bright); }
+
+/* ---------- sections ---------- */
+
+.sec-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 6px;
+  color: var(--muted);
+}
+.sec-title::before { content: "──"; color: var(--border); }
+.sec-title::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--border);
+  transform: translateY(1px);
+}
+.sec-name { color: var(--accent); font-weight: 700; letter-spacing: 0.06em; }
+
+.row { display: flex; flex-wrap: wrap; column-gap: 1ch; }
+.pad-slug { flex: 0 0 24ch; }
+.pad-key  { flex: 0 0 11ch; }
+.pad-cmd  { flex: 0 0 13ch; }
+.pad-num  { flex: 0 0 4ch; text-align: right; }
+
+.help-group { margin-top: 10px; }
+
+.job-head { display: flex; flex-wrap: wrap; column-gap: 2ch; align-items: baseline; }
+.job-head .date { margin-left: auto; }
+
+.bullet-line { padding-left: 3ch; text-indent: -2ch; max-width: 88ch; }
+.bullet { color: var(--accent); margin-right: 1ch; }
+
+.skill-cat { margin-top: 8px; }
+
+/* ---------- ascii / banner ---------- */
+
+.ascii {
+  font-family: inherit;
+  line-height: 1.2;
+  white-space: pre;
+  overflow-x: auto;
+  margin: 2px 0;
+}
+.banner { font-size: min(14px, calc((100vw - 44px) / 25)); }
+
+/* ---------- neofetch ---------- */
+
+.neofetch { display: flex; gap: 4ch; flex-wrap: wrap; align-items: center; margin: 6px 0; }
+.neo-info .row { min-height: 1.65em; }
+
+/* ---------- input line ---------- */
+
+#input-line { display: flex; flex-wrap: wrap; align-items: baseline; margin-top: 10px; }
+#input-line.hidden { display: none; }
+#input-line .ps1 { margin-right: 1ch; }
+
+#typed { position: relative; flex: 1; min-width: 10ch; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+#cursor {
+  background: var(--accent);
+  color: var(--cursor-fg);
+  border-radius: 1px;
+}
+#input-line.focused #cursor { animation: blink 1.1s steps(1) infinite; }
+
+@keyframes blink { 50% { background: transparent; color: var(--text); } }
+
+#cmd {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: none;
+  background: transparent;
+  color: transparent;
+  font: inherit;
+  font-size: 16px; /* prevents iOS focus zoom */
+  caret-color: transparent;
+  outline: none;
+}
+
+/* ---------- tmux bar ---------- */
+
+#tmux-bar {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  background: var(--bg-elev);
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+#tmux-bar::-webkit-scrollbar { display: none; }
+
+.tmux-session {
+  background: var(--accent);
+  color: var(--sel-fg);
+  font-weight: 700;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.tmux-win {
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--muted);
+  padding: 5px 9px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.tmux-win:hover { background: var(--bg-chip); color: var(--bright); }
+.tmux-win .n { color: var(--amber); }
+
+.tmux-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5ch;
+  padding: 5px 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------- games / overlays ---------- */
+
+.matrix-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.snake-board {
+  color: var(--accent);
+  line-height: 1.05;
+  margin: 8px 0 4px;
+}
+
+/* ---------- noscript fallback ---------- */
+
+.static-fallback {
+  max-width: 84ch;
+  padding: 40px 24px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+.static-fallback h1 { color: var(--bright); margin-bottom: 4px; }
+.static-fallback h2 { color: var(--accent); margin: 28px 0 10px; }
+.static-fallback h3 { color: var(--bright); margin: 18px 0 4px; }
+.static-fallback p, .static-fallback li { color: var(--text); margin-bottom: 8px; }
+.static-fallback ul { padding-left: 24px; }
+.static-fallback .meta { color: var(--muted); }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 600px) {
+  body { font-size: 13px; }
+  .pad-slug { flex-basis: 100%; }
+  .pad-key { flex: 0 0 10ch; }
+  .job-head .date { margin-left: 0; flex-basis: 100%; }
+  #screen { padding: 14px 12px 20px; }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  #input-line.focused #cursor { animation: none; }
+  body { transition: none; }
+}
